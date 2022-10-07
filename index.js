@@ -63,6 +63,7 @@ const wrongList = []
 console.log(produce.length)
 
 let index = -1
+let header = document.querySelector("header")
 let number = $("#number")
 let introContainer = document.querySelector("#intro-container")
 let buttonContainer = $("#button-container")
@@ -75,7 +76,7 @@ let setQuestion = () => {
 
     index++
 
-    if(index === 57) {
+    if (index === 57) {
         main.className = "hide"
         showResults()
     }
@@ -95,11 +96,11 @@ let setQuestion = () => {
 
 let displayNum = (event) => {
     console.log(number.text().length)
-    if(number.text().length > 3){return}
+    if (number.text().length > 3) { return }
     let buttonNum = event.target.innerText
     $(number).append(buttonNum)
-    
-    
+
+
 }
 
 let showResults = () => {
@@ -125,12 +126,13 @@ $(buttonContainer).on("click", ".clear", () => {
 $("#intro-container").on("click", ".start", () => {
     main.classList.remove("hide")
     introContainer.classList.add("hide")
+    header.classList.add("hide")
     setQuestion()
 })
 
 $(buttonContainer).on("click", ".enter", () => {
     let answer = number.text()
-    if(answer === produce[index].code) {
+    if (answer === produce[index].code) {
         number.empty()
         setQuestion()
         body.classList.add("correct")
